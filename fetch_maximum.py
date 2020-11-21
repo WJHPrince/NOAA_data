@@ -5,6 +5,7 @@
 # @Site    : 
 # @File    : TEST.py
 # @Software: PyCharm
+# @Version : V0.8.1
 
 import requests
 import time
@@ -17,7 +18,7 @@ def paser_time(str_time):
     time_array = time.strptime(str_time, '%Y-%m-%dT%H:%M:%SZ')
     local_hour = int(time_array.tm_hour) + 8
     local_day = int(time_array.tm_mday)
-    if local_hour > 24:
+    if local_hour >= 24:
         local_day += 1
         local_hour -= 24
     return "{}-{}-{:0>2d} {:0>2d}:{}:{} UTC+08 ".format(time_array.tm_year, time_array.tm_mon, local_day,
