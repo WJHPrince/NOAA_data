@@ -77,7 +77,7 @@ my_headers = {
 while True:
     try:
         req = requests.get(r'https://services.swpc.noaa.gov/json/goes/primary/xray-flares-latest.json',
-                           headers=my_headers)
+                           headers=my_headers, timeout=5)
     except Exception as e_req:
         # print('ERROR: ', e_req)
         # print('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
