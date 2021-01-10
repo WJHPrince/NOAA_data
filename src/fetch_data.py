@@ -26,6 +26,12 @@ def paser_time(str_time):
                                                         local_hour, time_array.tm_min, time_array.tm_sec)
 
 
+def process_time_string(time_str):
+    time_array = datetime.datetime.strptime(time_str, '%Y-%m-%dT%H:%M:%SZ')
+    time_array = time_array + datetime.timedelta(hours=8)
+    return time_array.isoformat()
+
+
 def check_valid_json(json_str):
     try:
         json.loads(json_str)
@@ -120,15 +126,17 @@ if __name__ == '__main__':
     print('说明：该程序只监测太阳耀斑爆发的最大时间以及最大级别............')
     print('实时监测网站：https://www.swpc.noaa.gov/products/goes-x-ray-flux')
     print('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
-    data = fetch_data()
-    if data and is_real_time(data):
-        print('''最新数据：
-        开始时间：\t{}\t开始等级：\t{}\t
-        峰值时间：\t{}\t峰值等级：\t{}\t
-        结束时间：\t{}\t结束等级：\t{}\t'''.format(data['current_time'],
-                                         data['current_class'],
-                                         data['max_time'],
-                                         data['max_class'],
-                                         data['end_time'],
-                                         data['end_class']))
-    time.sleep(15)
+    while True:
+        data = fetch_data()
+        if data and is_real_time(data):
+            print('''最新数据：
+            开始时间：\t{}\t开始等级：\t{}\t
+            峰值时间：\t{}\t峰值等级：\t{}\t
+            结束时间：\t{}\t结束等级：\t{}\t'''.format(process_time_string(data['current_time']),
+                                             data['current_class'],
+                                             process_time_string(data['max_time']),
+                                             data['max_class'],
+                                             process_time_string(data['end_time']),
+                                             data['end_class']))
+            print('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+        time.sleep(15)
