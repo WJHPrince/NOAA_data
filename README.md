@@ -9,6 +9,9 @@
 - requests
 - time
 - datetime
+- pyecharts > v1.0
+- sqlite3
+- sqlalchemy = 1.3
 ## 说明
 主要方法为requests.get方法获取接口的json数据。
 主要问题：
