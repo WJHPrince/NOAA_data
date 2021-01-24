@@ -7,7 +7,7 @@
 # @Software: PyCharm
 
 import sqlite3
-from sqlalchemy import Column, Integer, String, create_engine
+from sqlalchemy import Column, Integer, String, create_engine, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -25,9 +25,9 @@ class XrayData(Base):
     """
     __tablename__ = 'Xraydata'
     id = Column(Integer, primary_key=True)
-    current_time = Column(String)
+    current_time = Column(DateTime)
     current_class = Column(String)
-    max_time = Column(String)
+    max_time = Column(DateTime)
     max_class = Column(String)
 
     def __repr__(self):
