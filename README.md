@@ -9,6 +9,9 @@
 - requests
 - time
 - datetime
+- Sqlalchemy
+- sqlite3
+- threading
 ## 说明
 主要方法为requests.get方法获取接口的json数据。
 主要问题：
@@ -23,5 +26,6 @@
 - 提供数据接口导出 ✓
 - 对于获取的请求需要进一步优化而不是直接丢弃非法请求
 - 可能需要添加图表绘制，即可视化
+- 多线程异步操作
 ## Others
 其中有注释掉一些Windows10中的API，据传在Windows中可以使用，但是由于我缺失实验环境，没有进行处理，同时由于代码曾经全部重构过，抛出Windows Alert部分的代码被移除了，只留下了被注释掉的部分API调用。
