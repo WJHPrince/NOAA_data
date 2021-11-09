@@ -1,5 +1,5 @@
 import requests
-from requests.cookies import RequestsCookieJar
+# from requests.cookies import RequestsCookieJar
 import re
 import json
 
@@ -15,8 +15,8 @@ mySession = requests.Session()
 page = mySession.get(url=loginUrl)
 
 # Get values for login from session.get page
-pageViewstate = re.findall(r'id\=\"\_\_VIEWSTATE\" value\=\"(.*)\" \/\>', page.text)
-pageViewstategenerator = re.findall(r'id\=\"\_\_VIEWSTATEGENERATOR\" value\=\"(.*)" \/\>', page.text)
+pageViewstate = re.findall(r'id="__VIEWSTATE" value="(.*)" />', page.text)
+pageViewstategenerator = re.findall(r'id="__VIEWSTATEGENERATOR" value="(.*)" />', page.text)
 
 # Gen login payload
 loginPayload = {
